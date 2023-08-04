@@ -1,0 +1,330 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#define STR_LEN 1024
+#define M 4
+
+/*
+Спецификация:
+    - SetLabel(n, m). Устанавливает ключ m узла n.
+    - LeftMostChild(n). Возвращает самый левый дочерний узел узла n. Если n является листом, возвращается нулевой узел.
+    - RightSibling(n). Возвращает правого соседа узла n и нулевой узел, если такового не существует.
+    Для этого находится родитель p узла n и все дочерние узлы p, затем среди этих потомков находится узел, расположенный непосредственно справа от узла n.
+Логика:
+    - Дерево это односвязный список односвязных списков,
+    хранящих указатели на элементы внешнего списка,
+    порядок записи элементов во внешний список определяется порядком
+    обхода дерева.
+Задачи:
+    - [x] Изучить теорию, посмотреть видео про деревья
+    - [ ] Написать алгоритм обхода
+    - [ ] Узнать больше про выделение памяти для структур
+    - [ ] Написать ф-ции печати дерева и все ее зависимости
+    - [ ] Напсиать ф-цию удаления узла
+    - [ ] Начать выполнять тестирование программы
+    - [x] Узнать про хранение строковых литералов в структурах, отличие
+    между ф-циями memcpy и strdub
+Статус:
+    - 3 may
+        10-02 : Пытаюсь разобраться с реализацией деревьев
+        17-00 : Разобрался со структурой данных написал часть ф-ции добавления
+    - 5 may
+        19-19 : Решил переписать структуры данных, существенно упростив их
+    - 6 may 
+        18-16 : Дописал ф-цию добавления узла.
+Проблемы:
+
+Реализация:
+    - Используется массив указателей-заголовков, индексированных номерами узлов.
+    Любой заголовок узла i указывает на связный список элементов,
+    являющихся дочерними узлами данного узла,
+    расположенных в порядке слева направо.
+    - Все полезные данные в дереве уникальны
+
+*/
+
+typedef struct TreeNode
+{
+    char* Data;
+    struct TreeNode* LeftChild;
+    struct TreeNode* brother;
+} TreeNode;
+
+typedef struct Tree
+{
+    // int size
+    TreeNode* root;
+} Tree;
+
+typedef struct {
+    int nodesCount;
+    int treeHeight;
+} servInfo;
+/*
+    Поиск осуществляется в порядке одного из обходов.
+    Начинается с корня
+    Прямой обход:
+        - Рекурсивно посещаются узлы левого под-дерева,
+        - Потом посещаются узлы следующих под-деревьев
+*/
+void treeSearchValue(TreeNode* curNode, TreeNode** res, char* sArg)
+{
+    if (curNode == NULL)
+    {
+        return;
+    }
+    if (strcmp(curNode->Data, sArg) == 0)
+    {
+        *res = curNode;
+        return;
+    }
+    treeSearchValue(curNode->LeftChild, res, sArg);
+    treeSearchValue(curNode->brother, res, sArg);
+}
+// - Search(m). Осуществляет поиск в дереве узла с ключом m Возвращает искомый узел или нулевой узел, если поиск окончился неудачей.
+TreeNode* treeSearch(Tree* tree, char* sArg)
+{
+    // Если ничего не найдено, то ф-ция вернет NULL
+    TreeNode* res = NULL; 
+    treeSearchValue(tree->root, &res, sArg);
+    return res;
+}
+/* геть-ф-ции */
+// Возвращает узел, являющийся корнем дерева.
+TreeNode* getRoot(Tree* tree)
+{
+    if (tree->root == NULL)
+    {
+        printf("[getRoot] : Error : Tree is empty.\n");
+    }
+    return tree->root;
+}
+// Возвращает ключ узла curNode.
+TreeNode* getLabel(Tree* tree, TreeNode* curNode)
+{
+    if (curNode == NULL)
+    {
+        printf("[getLabel] : Error : curNode does not exist.\n");
+    }
+    return curNode->Data;
+}
+// - Parent(n). Возвращает родителя узла n. Если n является корнем, возвращается нулевой узел.
+TreeNode* findAncestor(TreeNode* curNode, TreeNode* reqNode)
+{
+    if (curNode == NULL) return NULL;
+    if (curNode == reqNode)
+    {
+        printf("[findAncestor] : Error : The root has no parent.\n");
+        return NULL;
+    }
+    TreeNode *ancestor = NULL, *child = curNode->LeftChild;
+    while (child != NULL)
+    {
+        if (child == reqNode)
+        {
+            printf("[findAncestor] : Success : The desired node was successfully found.\n");
+            return curNode;
+        }
+        ancestor = findAncestor(child, reqNode); 
+        if (ancestor != NULL)
+        {
+            return ancestor;
+        }
+        child = child->brother;
+    }
+    return NULL;
+}
+TreeNode* getParent(Tree* tree, TreeNode* reqNode)
+{
+    TreeNode* Parent = NULL;
+    Parent = findAncestor(tree->root, reqNode);
+    return Parent;
+}
+// Ф-ция подсчета количества потомков у данного родительского узла.
+TreeNode* bC(TreeNode* parentNode, int* cC)
+{
+    // childCount
+    TreeNode* lastBrother = parentNode->LeftChild;
+    if (lastBrother != NULL)
+    {
+        cC = 1;
+        while (lastBrother->brother != NULL)
+        {
+            cC++;
+            lastBrother = lastBrother->brother;
+        }    
+    }
+    return lastBrother;
+}
+// Добавляет узел с ключом m в дерево как дочернюю вершину узла n, если в результате выполнения операции степень дерева не изменится и непосредственно перед ее выполнением функция Search(m) возвратила нулевой узел.
+void treeAdd(Tree* tree, char* Data, TreeNode* parentNode)
+{
+    // Для поиска родительского узла как раз используется ф-ция search
+    // Если непосредственно перед добавлением узла ф-ция search возвратила 0
+    TreeNode* isNULL = treeSearch(tree, Data);
+    // При добавлении должна осуществляться проверка на количество дочерних узлов у данного узла
+    // Случай 1 -> дерево - пустое
+    if (tree->root == NULL)
+    {
+        printf("[treeAdd]: The tree is empty, new value will be added to the root.\n");
+        // Выделим память под шаблон структуры данных
+        TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+        // Память под структуру выделена => выделена память и под Data
+        strcpy(newNode->Data, Data);
+        newNode->brother = NULL;
+        newNode->LeftChild = NULL;
+        tree->root = newNode;
+    }
+    // Случай 2 -> узла с переданным ключом несуществует
+    else if (isNULL == NULL)
+    {
+        int cC = 0; 
+        TreeNode *newNode = (TreeNode*)malloc(sizeof(TreeNode)), *curNode = bC(parentNode, &cC);
+        strcpy(newNode->Data, Data); 
+        // Случай 1 -> У родительского узла нет потомков
+        if (parentNode->LeftChild == NULL)
+        {
+            parentNode->LeftChild = newNode;
+            newNode->brother = NULL;
+            newNode->LeftChild = NULL;
+            printf("[treeAdd] : Debug info : newNode is added as the first child node for parentNode.\n");
+        }
+        // У родительского узла есть потомки, но их меньше 4х: 
+        else if (cC < M)
+        {
+            curNode->brother = newNode;
+            newNode->brother = NULL;
+            newNode->LeftChild = NULL;
+            printf("[treeAdd] : Debug info : newNode is added as the [%d] brother node for parentNode.\n", cC+1);
+        }
+        else
+        {
+            printf("[treeAdd] : Error : Can't add newNode parent node is full.\n"); 
+            free(newNode);
+        }
+    } 
+    // Случай 3 -> узел с переданным ключом уже существует:
+    else 
+    {
+        printf("[treeAdd]: treeNode with the specified data already exist.\n");
+    }
+}
+
+// - Delete(m). Удаляет узел с ключом m.
+void delNodeRecursion(TreeNode* forDelParent, TreeNode* forDel)
+{
+    // Если не самый левый, то найдем его
+    // Общий случай
+    if (forDelParent->LeftChild == NULL)
+    {
+        return;
+    }
+    if (forDel->LeftChild == NULL)
+    {
+        return;
+    }
+    forDelParent->LeftChild = forDel->LeftChild;
+    forDelParent->LeftChild->brother = forDel->brother;
+    forDel->LeftChild->LeftChild->brother = forDel->LeftChild->brother;
+
+    delNodeRecursion(forDel, forDel->LeftChild);
+
+}
+// - Удаляемый узел заменяется самым левым дочерним узлом
+void delNode(Tree* tree, char* Data)
+{
+    TreeNode *forDel = NULL, *parent = NULL;
+    if (tree->root == NULL)
+    {
+        printf("[delNode] : Error : The tree is empty.\n");
+        return;
+    }
+    // Нахожу узел и рассматриваю различные случаи.
+    treeSearchValue(tree->root, &forDel, Data);
+    if (forDel == NULL)
+    {
+        printf("[delNode] : Error : The node with the specified data does not exist.\n");
+        return;
+    }
+    if (tree->root == forDel)
+    {
+        // 
+    }
+    // Если узел существует и не корень, то нужно найти его предка
+    parent = getParent(tree, forDel);
+    // Случай 1 : Если у удаляемого узла нет потомков
+    if (forDel->LeftChild == NULL)
+    {
+        TreeNode* befForDel = parent->LeftChild;
+        if (befForDel != forDel)
+        {
+            while (befForDel->brother != forDel)
+            {
+                befForDel = befForDel->brother;
+            }
+            befForDel->brother = forDel->brother;  
+        }
+        else
+        {
+            parent->LeftChild = forDel->brother;
+            parent->LeftChild->brother = forDel->brother->brother; 
+        }
+        free(forDel);
+    }
+    // Случай 2 есть потомки у удаляемого узла + рекурсия.
+    else
+    {
+        //int cC = 0; TreeNode* lastBrother = bC(forDel, &cC);
+        // Если у удаляемого узла есть потомки, но их меньше 4х но нужно знать количество потомков род узла для forDel
+        
+        // Если у левого потомка удаляемого узла нет потомков
+        if (forDel->LeftChild->LeftChild == NULL)
+        {
+            parent->LeftChild = forDel->LeftChild;
+            forDel->LeftChild->LeftChild = forDel->LeftChild->brother;
+            forDel->LeftChild->brother = forDel->brother;
+            // 
+            free(forDel);
+        }
+        // Если у левого потомка удаляемого узла есть потомки
+        else
+        {
+            TreeNode *befForDel = parent->LeftChild, *tmp = forDel;
+            if (befForDel != forDel)
+            {
+                while (befForDel->brother != forDel)
+                {
+                    befForDel = befForDel->brother;
+                }
+            }
+            // Если успешно завершилась : 
+            delNodeRecursion(parent, forDel);
+            // Удаляю по сохраненному указателю
+            free(tmp);
+        }
+    }
+}
+// - GenTree(). Формирует дерево заданного количества элементов
+// - MakeNull(). Делает дерево пустым.
+
+/* Рекурсивный алгоритм Чтобы удалить дерево, мы должны обойти все узлы дерева и удалить их один за другим. */
+
+void MakeNULL(Tree* tree)
+{
+    // В порядке прямого обхода очищаю память, выделенную для крайних узлов, сначала для последнего, потом для предпоследнего и т.д
+    TreeNode* curNode = tree->root;
+    if (curNode == NULL)
+    {
+        printf("[MakeNULL] : The tree is already empty.\n");
+        return;
+    }
+    // При удалении потомков мне нужен указатель на предка.
+    // Какой признак того что я опустился до конца или больше нет потомков: curNode->leftChild == NULL, храню адрес предка, пока он сам не стал потомком
+    // Нужно сформировать достаточное количество условий выхода из рекурсии 
+}
+
+int main()
+{
+    return 0;
+}

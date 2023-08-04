@@ -1,0 +1,3 @@
+/mnt3/Workspaces/C Programming/Domashnev.2/IDZ/cmake-build-debug/CMakeFiles/IDZ.dir
+/mnt3/Workspaces/C Programming/Domashnev.2/IDZ/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt3/Workspaces/C Programming/Domashnev.2/IDZ/cmake-build-debug/CMakeFiles/rebuild_cache.dir

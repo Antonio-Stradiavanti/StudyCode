@@ -1,0 +1,3 @@
+/mnt3/Workspaces/C Programming/Domashnev.2/Lab5.clion/cmake-build-debug/CMakeFiles/Lab5_clion.dir
+/mnt3/Workspaces/C Programming/Domashnev.2/Lab5.clion/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt3/Workspaces/C Programming/Domashnev.2/Lab5.clion/cmake-build-debug/CMakeFiles/rebuild_cache.dir
