@@ -25,6 +25,8 @@ void main()
         }
     }
 
+
+
     printf("sum of elements with even indeces: | %d |\nsum of elements with odd indeces: | %d |\n", summ_even, summ_odd);
     free(arr);
 }

@@ -1,0 +1,38 @@
+{
+	"folders": [
+		{
+			"path": "C Programming"
+		},
+		{
+			"path": "Collab C Progr"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.py": "python",
+			"TASK-07.C": "cpp",
+			"cmath": "c",
+			"*.tcc": "c",
+			"stdio.h": "c",
+			"matrix_operations.h": "c",
+			"stdlib.h": "c",
+			"malloc.h": "c",
+			"math.h": "c",
+			"stdbool.h": "c",
+			"cstdio": "c",
+			"forward_list": "cpp",
+			"deque": "cpp",
+			"list": "cpp",
+			"string": "cpp",
+			"unordered_map": "cpp",
+			"unordered_set": "cpp",
+			"vector": "cpp",
+			"io_context": "cpp",
+			"iostream": "cpp",
+			"iosfwd": "cpp",
+			"ostream": "cpp",
+			"barrier": "c",
+			"bitset": "c"
+		}
+	}
+}
