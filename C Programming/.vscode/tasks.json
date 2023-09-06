@@ -13,7 +13,9 @@
 				"${file}",
 				"-o",
 				// Абсолютный путь к каталогу, в котором хранится файл.
-				"${fileDirname}/${fileBasenameNoExtension}"
+				"${fileDirname}/${fileBasenameNoExtension}",
+				// Явно подключаем библиотеку, содержащую заголовочный файл math.h
+				"-lm"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
@@ -30,7 +32,7 @@
 		{
 			"label": "gcc -> Build & Run",
 			"type": "shell",
-			"command" : "/usr/bin/gcc -g3 -Wall \"${file}\" -o \"${fileDirname}/${fileBasenameNoExtension}\" && \"${fileDirname}/${fileBasenameNoExtension}\"",
+			"command" : "/usr/bin/gcc -g3 -Wall \"${file}\" -lm -o \"${fileDirname}/${fileBasenameNoExtension}\" && \"${fileDirname}/${fileBasenameNoExtension}\"",
 			"options": {"cwd": "${fileDirname}"},
 			"problemMatcher" : "$gcc",
 			"detail": "Скрипт выполняет компиляцию исходного файла и запуск полученного исполняемого файла."
