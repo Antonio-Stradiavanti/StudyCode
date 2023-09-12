@@ -50,6 +50,8 @@ class Board
   int flaggedCells;
   int timeSiceStart;
   int size;
+  // Флаги
+  bool isGameOver;
   bool showMined;
   // Введенная пользователем команда
   string inpt;
@@ -59,9 +61,11 @@ public:
   void openCell(int x, int y);
   // Обработать ввод
   void handleUserInput();
+  // Основной интерфейс пользователя.
+  void startGame();
   // Конструктор создает доску
   Board(){
-    timer = clock();
+    //timer = clock();
     size = 10; showMined = false;
     for (int i = 0; i < size; i++){
       vector<Cell> tmpV; 
@@ -76,7 +80,8 @@ public:
 };
  
 void Board::printBoard(){
-  string frow = "Число мин : " + to_string(minedSells) + ", Пройденное время : " + to_string(timer) + "\n", zrow = "   ", row; // Создаем пустую строку
+  string frow;//= "Число мин : " + to_string(minedSells) + ", Пройденное время : " + to_string(timer) + "\n",
+  string zrow = "   ", row; // Создаем пустую строку
   string abc = "abcdefghijklmnopqrstuvwxyz";
   int i, j;
   for (i = 0; i < board.size()-1; i++){
