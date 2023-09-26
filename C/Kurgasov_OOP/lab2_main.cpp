@@ -13,6 +13,7 @@ public:
 
   }
   Matrix operator + (Matrix m2);
+  void printMatrix();
 };
 int main(){
 
