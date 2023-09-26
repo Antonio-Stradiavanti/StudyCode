@@ -38,6 +38,16 @@ public:
     delete[] matrix;
   }
   Matrix operator + (Matrix m2);
+  void operator = (Matrix m2);
+  void print();
+};
+struct MatrixSumException : public exception {
+  // Переопределяем виртуальную ф-цию what
+  // Возвращает изменяемый указатель на неизменяемый массив символов. 
+  const char* what () {
+    // Возвращает описание исключения
+    return "Возникло исключение! Нельзя складывать матрицы с разным числом строк и столбцов.";
+   }
 };
 void Matrix::print(){
   string out;
