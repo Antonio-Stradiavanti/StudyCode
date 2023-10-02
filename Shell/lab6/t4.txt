@@ -1,4 +1,0 @@
-There are two kinds of loops in the Bourne shell: for and while loops.
-Escaping characters. Sometimes we want to quote only single character. 
-To do this, we can precede a character with a backslash, 
-which in this context is called the escape character.
