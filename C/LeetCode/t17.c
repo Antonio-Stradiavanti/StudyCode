@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+// Вывожу массив указателей.
 int main(){
   char alf[26] = "abcdefghijklmnopqrstuvwxyz";
   char** a = (char**)malloc(3 * sizeof(char*));
@@ -11,21 +12,19 @@ int main(){
     // Используется накопительная сумма размеров под-массивов от 1 до n; 
     a[i] = (char*)malloc( subarrLen[i] );
     for (j = 0; j < subarrLen[i]; ++j){
-      printf("here\n");
       // Выхожу за границы выделенной памяти.
-      **(a) = *(alf+ lenSum + j);
+      *( *(a+i) + j) = *(alf+ lenSum + j);
     }
-    printf("here2\n");
     lenSum+=subarrLen[i];
   }
 
-  /* printf("\n");
+  printf("\n");
   for (i = 0; i < 3; ++i){
     for (j = 0; j < subarrLen[i]; ++j){
       printf("%c ", a[i][j]);
     }
     printf("\n");
-  } */
-
+  }
+  // Очистить выделенную память !!!
   return 0;
 }
