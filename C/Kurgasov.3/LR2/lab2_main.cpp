@@ -54,6 +54,7 @@ public:
     }
     delete[] matrix;
   }
+  Matrix& operator=(const Matrix& m1);
   friend Matrix operator+(const Matrix& m1, const Matrix& m2);
   friend istream& operator>>(istream& cin, Matrix& m);
   friend ostream& operator<<(ostream& cout, Matrix& m);
@@ -71,6 +72,17 @@ struct UnrecComException : public exception {
     return "Возникло исключение! Команда не распознана.";
   }
 };
+Matrix& Matrix::operator=(const Matrix& m1){
+  this->Rows = m1.Rows;
+  this->Cols = m1.Cols;
+  this->MaxVal = m1.MaxVal;
+  for (int i = 0; i < Rows; i++){
+    for (int j = 0; j < Cols; j++){
+      this->matrix[i][j] = m1.matrix[i][j];
+    }
+  }
+  return *this;
+}
 Matrix operator+(const Matrix& m1, const Matrix& m2){
     if (m1.Rows != m2.Rows && m1.Cols != m2.Cols){
       throw MatrixSumException(); 
