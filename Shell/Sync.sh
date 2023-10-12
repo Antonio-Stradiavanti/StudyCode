@@ -6,4 +6,5 @@ case "$(uname)" in
   Darwin) os="mac" ;;
 esac
 git add .
-git commit -m "${com} ${os} : ${now}"
+git commit -m "$com $os : $now"
+git fetch
