@@ -3,26 +3,36 @@
 using namespace std;
 // Вектор-ф-ция, вектор, компоненты которого - ф-ции
 class AbstrComp {
+protected:  
+  int pres;
+  double actParams[3];
+  double res;
 public:
-  virtual void printRes(int i, int pres, double* inpt, double res) = 0;
-  virtual double Compute(double* inpt) = 0;
+  void setInpt(int pres, double* inpt){
+    this->pres = pres;
+    for (int i = 0; i < 3; ++i){
+      this->actParams[i] = inpt[i];
+    } 
+  }
+  virtual void printRes(int i) = 0;
+  virtual void Compute(double* inpt) = 0;
 };
 class SinComp : public AbstrComp {
 public:
-  void printRes(int i, int pres, double* inpt, double res){
-    printf("<< i=%d : %.*f*sin(%.*f*%.*f) = %.*f\n", i, pres, inpt[0], pres, inpt[1], pres, inpt[2], pres, res);
+  void printRes(int i){
+    printf("\n<< i=%d : %.*f*sin(%.*f*%.*f) = %.*f\n", i, pres, actParams[0], pres, actParams[1], pres, actParams[2], pres, res);
   }
-  double Compute(double* inpt){
-    return inpt[0]*sin(inpt[1]*inpt[2]);
+  void Compute(double* actParams){
+    this->res = actParams[0]*sin(actParams[1]*actParams[2]);
   }
 };
 class ArctanComp : public AbstrComp {
 public:
-  void printRes(int i, int pres, double* inpt, double res){
-    printf("<< i=%d : %.*f*sin(%.*f*%.*f) = %.*f\n", i, pres, inpt[0], pres, inpt[1], pres, inpt[2], pres, res);
+  void printRes(int i){
+    printf("<< i=%d : %.*f*arctg(%.*f*%.*f) = %.*f\n", i, pres, actParams[0], pres, actParams[1], pres, actParams[2], pres, res);
   }
-  double Compute(double* inpt){
-    return inpt[0]*atan(inpt[1]*inpt[2]);
+  void Compute(double* actParams){
+    this->res = actParams[0]*atan(actParams[1]*actParams[2]);
   }
 };
 void menu() {
@@ -52,16 +62,21 @@ void menu() {
           goto here2;
           break;
       }
-
+      // Тут нужно обработать ввод
       cout << div << spc << "2. Введите значение параметров :\n" << spc << ">> a = "; 
       cin >> inpt[0]; cout << spc << ">> b = "; cin >> inpt[1];
-
       cout << div << spc << "3. Введите значение аргумента :\n" << spc << ">> x = "; cin >> inpt[2];
-
+      
+      // Фиксируем входные данные
+      vec[i]->setInpt(pres, inpt);
       // Вызов абстрактного метода
-      const double& res = vec[i]->Compute(inpt);
-      vec[i]->printRes(i, pres, inpt, res);
+      vec[i]->Compute(inpt);
     }
+    // Выводим вектор ф-ций
+    for (int i = 0; i < N; ++i){
+      vec[i]->printRes(i);
+    }
+    cout << endl;
     // Очистка памяти
     for (int i = 0; i < N; ++i){
       delete vec[i];
@@ -79,7 +94,7 @@ int main() {
   bool isExit = false; char c;
   while (!isExit){
     cout << "__ Решение ЛР №3 - \"Наследование и полиморфизм\"\nМеню : {\n\t1 -> Сформировать вектор ф-ций,\n\t2 -> Завершить работу программы\n}\n>> Введите команду : "; cin >> c;
-    switch (c)
+    switch (c - '0')
     {
     case 1:
       menu();

@@ -5,6 +5,7 @@ using namespace std;
 int main() {
   string tst;
   cin >> tst;
+  cin >> tst;
   const string& rtst = tst;
   // Хранит Результат регулярного выражения
   smatch match;
