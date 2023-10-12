@@ -1,5 +1,7 @@
 #include<iostream>
 #include<math.h>
+#include<exception>
+#include<regex>
 using namespace std;
 // Вектор-ф-ция, вектор, компоненты которого - ф-ции
 class AbstrComp {
@@ -16,6 +18,7 @@ public:
   }
   virtual void printRes(int i) = 0;
   virtual void Compute(double* inpt) = 0;
+  virtual ~AbstrComp() {}
 };
 class SinComp : public AbstrComp {
 public:
@@ -37,20 +40,26 @@ public:
 };
 void menu() {
   try {
-    int N = 0;
-    cout << "<< Введите размерность векторной ф-ции :\n>> N = "; cin >> N;
-    if (N < 0) throw -1;
+    string tst;
 
-    AbstrComp** vec = new AbstrComp*[N]; int chs, pres; double inpt[3]; 
+    int N;
+    cout << "<< Введите размерность векторной ф-ции :\n>> N = "; cin >> tst;  N = stoi(tst);
+    if (N < 0) throw out_of_range("");
+
+    AbstrComp** vec = new AbstrComp*[N]; char c; int pres; double inpt[3]; 
     const string spc = string(3, ' '); const string div = "<< ---\n";
 
     cout << "<< Для корректной работы программы ввести :\n   0. Число цифр после запятой (точность)\n   1. Номер ф-ции n из множества : {\n\t1 -> a*sin(b*x)\n\t2 -> a*atan(b*x)\n   2. Вещественные параметры а и b\n   3. Аргумент ф-ции x}\n>> точность = ";
-    cin >> pres;
+    
+    //getline(cin, tst, '\n');
+    cin >> tst;
+    pres = stod(tst);
+
     for (int i = 0; i < N; ++i){
       here2 :
       cout << ">> Сформируем " << i << "-й компонент вектора :\n" << spc << "1. Введите номер ф-ции из множества :\n" << spc << ">> n = ";
-      cin >> chs;
-      switch (chs) {
+      cin >> c;
+      switch (c - '0') {
         case 1 :
           vec[i] = new SinComp;
         break;
@@ -64,8 +73,10 @@ void menu() {
       }
       // Тут нужно обработать ввод
       cout << div << spc << "2. Введите значение параметров :\n" << spc << ">> a = "; 
-      cin >> inpt[0]; cout << spc << ">> b = "; cin >> inpt[1];
-      cout << div << spc << "3. Введите значение аргумента :\n" << spc << ">> x = "; cin >> inpt[2];
+      cin >> tst ; inpt[0] = stod(tst); 
+      cout << spc << ">> b = "; cin >> tst ; inpt[1] = stod(tst);
+
+      cout << div << spc << "3. Введите значение аргумента :\n" << spc << ">> x = "; cin >> tst; inpt[2] = stod(tst);
       
       // Фиксируем входные данные
       vec[i]->setInpt(pres, inpt);
@@ -83,10 +94,12 @@ void menu() {
     }
     delete[] vec;
     //---
-  } catch (int e) {
-    cout << "<! Число компонентов вектора не может быть меньше нуля." << endl; 
-  } catch (std::bad_alloc& e){
-    cout << "<! Невозможно выделить память" << endl;
+  } catch (out_of_range& e0) {
+    cout << "<! Число компонентов вектора не может быть меньше нуля.\n" << endl; 
+  } catch (std::bad_alloc& e1){
+    cout << "<! Невозможно выделить память.\n" << endl;
+  } catch (invalid_argument& e2) {
+    cout << "<! Введите число, а не последовательность символов.\n" << endl;
   }
 }
 int main() {
@@ -107,5 +120,4 @@ int main() {
     break;
     }
   }
-  
 }
