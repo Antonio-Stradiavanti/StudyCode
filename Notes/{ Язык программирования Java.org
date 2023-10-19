@@ -1,2 +1,0 @@
-#+TITLE: Изучаю Java
-* TODO ? Что такое JWM и JDK
