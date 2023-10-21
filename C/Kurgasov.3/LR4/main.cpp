@@ -2,12 +2,15 @@
 #include<string>
 #include<vector>
 using namespace std;
-template <typename T>
-class Array {
-
+/* class Collection {
+  int n;
+  virtual ~Collection() {}
 };
-class CharArray {
-  int size;
+template <typename T>
+class NumArray : public Collection {
+  vector<T> A;
+};
+class CharArray : public Collection {
   char* cA;
 };
 template <class T> 
@@ -16,7 +19,12 @@ class Matrix {
   // Типы элементов матрицы : Множество, массив символов.
   vector< vector<T> > A;
   char* cA;
-};
+public:   
+}; */
 int main() {
+  int* a = new int(5);
+  // *a = 5
+  int* b = a; (*b)++; b++;
+  printf("%d %d\n", *a, *b);
   return 0;
 }
