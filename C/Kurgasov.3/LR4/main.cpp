@@ -1,33 +1,59 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<random>
 using namespace std;
-template <class T>
+template <class U>
 class NumArray {
   /* Продумать структуру класса
    * В этом классе должен присутствовать массив определенного типа
    * Нужно иметь возможность изменять количество элементов массива и их тип
    */
   // Массив заданного пользователем размера
-  T* A; 
+  int n;
+  U* A; 
 public:
-  NumArray(int N) : A(N) {
-    // Вызываю генератор случайных чисел    
+  NumArray(int n, int a, int b) : n{n} {
+    random_device gen; uniform_int_distribution<int> disInt(a, b);
+    uniform_real_distribution<float> disFloat(0.0, 1.0);
+
+    A = new U[n]{};
+    
+    for (int i = 0; i < n; ++i) {
+      A[i] = disInt(gen) + disFloat(gen);
+    }
   }
+  ~NumArray() { delete[] A; }
+  void print() {
+    cout << "[ ";
+    for (int i = 0; i < n-1; ++i)
+      cout << A[i] << ", ";
+    cout << A[i] << " ]" << endl;
+  }   
 };
 class CharArray {
-  int N;
+  int n;
   char* A;
 public: 
-  CharArray(int N) : N{N} {
-    // Создаем случайную строку длиной N
+  CharArray(int n) : n{n} {
+    mt19937 rd(time(NULL));
+
+    char abc[53] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+    int i;
+
+    A = new char[n+1]{};
+
+    for (i = 0; i < n; ++i) A[i] = abc[ rd()%52 ]; 
+    A[i] = '\0';
   }
+  void print() { cout << "\"" << A << "\"" << endl; }
+  ~CharArray() { delete[] A; }
 };
 
-template <class T> 
+template <class U> 
 class Matrix {
   int n, m;
-  vector< vector<T*> > A;
+  vector< vector<U*> > A;
 
 public: 
   /*
@@ -39,23 +65,25 @@ public:
   // Переопределим конструктор копирования
   Matrix (const Matrix& M) : n{M.n}, m{M.m} {this->A = M.A;}
 
-  // Сформируем вектор случайных элементов определенного типа.
-  Matrix (int n, int m, int N) : n{n}, m{m}, A(n, vector<T*>(m)) {
+  Matrix (int n, int m, int size, int num, int a=0, int b=0) : n{n}, m{m}, A(n, vector<U*>(m)) {
     // TODO разобраться с тем как сформировать матрицу сл. зн любого из элементарных типов.
     // Матрица может хранить либо массив символов, либо массив некоторых чисел.
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < m; ++j) {
-        A[i][j] = new T()[N];
+        // Вызываю конструктор по умолчанию для каждого из элементов.
+        A[i][j] = new U{size, a, b};
       }
     }
   }
+
   ~Matrix() {
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < m; ++j) {
-        delete[] A[i][j];
+        delete A[i][j];
       }
     }
   }
+
   void print(const string& name); 
 
   Matrix& oprator= (const Matrix& M) {
@@ -75,15 +103,19 @@ public:
   friend Matrix operator+ (char, Matrix);  
 };
 
-template<class T> void Matrix<T>::print(const string& name) {
+template<class U> void Matrix<U>::print(const string& name) {
     cout << "<< Матрица " << name << endl;
-    for (const auto& rows : this->A) {
-      for (const auto& cols : rows) {
-        cout << cols << " ";
+    for (int i = 0; i < this->n; ++i) {
+      printf("%d. ", i);
+      for (int j = 0; i < this->m-1; ++j) {
+        
       }
-      cout << endl;
     }
     cout << "<< ---" << endl;
+}
+
+void menu() {
+  
 }
 
 int main() {
