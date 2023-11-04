@@ -5,7 +5,10 @@
 #include<ctime>
 #include<exception>
 #include<cstring>
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/remotes/origin/main
 using namespace std;
 template <class T>
 class NumArray {
@@ -24,15 +27,15 @@ public:
         A[i] = 0;
       }
     } else {
-for (int i = 0; i < n; ++i) {
-A[i] = disInt(gen) + disFloat(gen);
-}
-}
-}
-~NumArray() { delete[] A; }
-void print() {
-int i;
-
+      for (int i = 0; i < n; ++i) {
+        A[i] = disInt(gen) + disFloat(gen);
+      }
+    }
+  }
+  ~NumArray() { delete[] A; }
+  void print() {
+    int i;
+    
     cout << "[ ";
     for (i = 0; i < n-1; ++i)
       cout << A[i] << ", ";
@@ -83,9 +86,14 @@ class CharArray {
   random_device gen;
 
 public: 
+<<<<<<< HEAD
+  CharArray() : n{}, A{nullptr} {}
+  CharArray(int n, ...) : n{n}, disInt(0, 51) {
+=======
   CharArray() : n{}, str{nullptr}, disInt{} {}
   // Создает случайную строку
   CharArray(int n, ...) : n{n}, disInt(0, 51), str{new char[n+1]} {
+>>>>>>> refs/remotes/origin/main
     
     char abc[53] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     int i;
@@ -93,6 +101,12 @@ public:
     for (i = 0; i < n; ++i) str[i] = abc[ disInt(gen) ]; 
     str[i] = '\0';
   }
+<<<<<<< HEAD
+  ~CharArray() { delete[] A; }
+  void print() { cout << "\"" << A << "\""; }
+  friend CharArray* operator+ (const CharArray& A1, const char* c);
+  friend CharArray* operator+ (char* c, const CharArray& A1);
+=======
   ~CharArray() { delete[] str; }
 
   CharArray* operator= (const CharArray* const A1);
@@ -100,9 +114,36 @@ public:
   void print() { cout << "\"" << str << "\""; }
 
   friend CharArray* operator+ (const CharArray& A1, const char c);
+>>>>>>> refs/remotes/origin/main
 
 
 };
+CharArray* operator+ (const CharArray& A1, const char* c) {
+  CharArray* A = new CharArray{};
+
+  A->A = strcat(A1.A, c);
+
+  return A;
+}
+CharArray* operator+ (char* c, const CharArray& A1) {
+  int lc = strlen(c);
+  CharArray* A = new CharArray{};
+  A->n = A1.n + lc + 1;
+  A->A = new char[A->n]{};
+
+  //A->A = strcat(c, A1.A);
+  // c -> 2байта
+
+  int i, j = 0;
+
+  for (i = 0 ; i < lc; ++i) A->A[i] = c[i];
+  for (i = lc; i < A->n; ++i) A->A[i] = A1.A[j++];
+ 
+ A->A[i] = '\0';
+
+  return A;
+}
+
 
 CharArray* CharArray::operator= (const CharArray* const A1) {
   int i;
@@ -156,6 +197,16 @@ class Matrix {
   int n, m;
   int size;
 
+<<<<<<< HEAD
+  string name;
+  vector< vector< T* > > A;
+
+public: 
+  Matrix (const Matrix& M) : n{M.n}, m{M.m} {this->A = M.A;}
+
+  Matrix (int n, int m, int size, name = "A", int a=0, int b=0) : n{n}, m{m}, size{size}, name{name}, A( n, vector< T* >(m) ) {
+   for (int i = 0; i < n; ++i) {
+=======
   string name = "A";
   vector< vector< T > > A;
 
@@ -163,6 +214,7 @@ public:
   Matrix (const Matrix& M) : n{M.n}, m{M.m}, A( M.n, vector< T > (M.m) ) {
     
     for (int i = 0; i < n; ++i) {
+>>>>>>> refs/remotes/origin/main
       for (int j = 0; j < m; ++j) {
         // Копируем
         this->A[i][j] = M.A[i][j];
@@ -186,9 +238,13 @@ public:
     }
   } */
 
+<<<<<<< HEAD
+  template<class U> friend Matrix<U> operator+(const Matrix<U>& M1, const char* c)
+=======
   Matrix<T>& operator= (const Matrix<T>& M);
 
   template<class U> friend Matrix<U> operator+(const Matrix<U>& M1, const char c);
+>>>>>>> refs/remotes/origin/main
   template <class U> friend ostream& operator<< (ostream& cout, const Matrix<U>& M);
   //template <class U> friend Matrix& operator+ (const Matrix& M1, const Matrix& M2);
   void setName (string Name) { name = Name; }
@@ -201,7 +257,24 @@ struct MatrixSumException : public exception {
     return "<! Нельзя складывать матрицы с разным числом строк и столбцов.";
    }
 };
+template <class U> ostream& operator<< (ostream& cout, const Matrix<U>& M) {
+  cout << "<< Матрица " << M.name << endl;
+  int i, j;
 
+<<<<<<< HEAD
+  for (i = 0; i < M.n; ++i) {
+    cout << i+1 << ". ";
+    for (j = 0; j < M.m - 1; ++j) {
+      A[i][j]->print(); cout << ", ";
+    }
+    A[i][j]->print(); cout << ";" << endl;
+  }
+  cout << "<< ---" << endl;  
+  return cout;  
+}
+
+template<class U> Matrix<U> operator+(const Matrix<U>& M1, const char* c) {
+=======
 template<class T> Matrix<T>& Matrix<T>::operator= (const Matrix<T>& M) {
   if (this->n != M.n || this->m != M.m){
     // Изменить размер вектора.
@@ -222,17 +295,30 @@ template<class T> Matrix<T>& Matrix<T>::operator= (const Matrix<T>& M) {
 }
 
 template<class U> Matrix<U> operator+(const Matrix<U>& M1, const char c) {
+>>>>>>> refs/remotes/origin/main
   // Если размер не совпадает, то генерируем исключение
   //if (M1.n != M2.n || M1.m != M2.m) throw MatrixSumException{};
   // Нужно вызвать соответствующий перегруженный оператор для элементов матрицы.
   Matrix<U> M(M1.n, M1.m, M1.size);
 
+<<<<<<< HEAD
+  for (int i = 0; i < M.n; ++i) {
+    for (int j = 0; j < M.m; ++j) {
+      // M[i][j] -> указатель на тип T.
+      M[i][j] = *M1[i][j] + c;
+    }
+  }   
+
+  return M;   
+}
+=======
   for (int i = 0; i < M1.n; ++i) {
     for (int j = 0; j < M1.m; ++j) {
       // M[i][j] -> указатель на тип T.
       M.A[i][j] = *(M1.A[i][j]) + c;
     }
   }   
+>>>>>>> refs/remotes/origin/main
 
   return M;   
 }
@@ -256,6 +342,15 @@ template <class U> ostream& operator<< (ostream& cout, const Matrix<U>& M) {
 
 int main() {
  
+<<<<<<< HEAD
+  Matrix< NumArray<int> > M{5, 5, 3};
+
+  cout << M;
+  
+  //tstMatrix< NumArray<int> > tst{5};
+  //tstMatrix< CharArray > tst{5};
+  //tst.print();
+=======
   /* Matrix< CharArray > M{5, 5, 5, "A"};
   Matrix< CharArray > M1{M};
   cout << M;
@@ -268,6 +363,7 @@ int main() {
     //t0[i]{10, 0, 100};
   }
 
+>>>>>>> refs/remotes/origin/main
 
   return 0;
 }

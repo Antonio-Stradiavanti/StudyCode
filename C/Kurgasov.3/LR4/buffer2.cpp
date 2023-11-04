@@ -12,6 +12,13 @@ public :
     for (int i=0; i<s; ++i) elem[i]=0.0;
     // Если нет свободной памяти то выделяем в 2 раза больше чем требует пользователь.
   }
+
+  vec(const vec&);
+
+  vec(initializer_list<T> lst) : sz{lst.size()}, elem{new T[sz]} {
+    copy (lst.begin(), lst.end(), elem);
+  }
+
   ~vec() {
     delete[] elem;
   }
@@ -39,12 +46,13 @@ public :
     }
     this->sz = newsize;
   }
-  void push_back(T el) {
+  void push_back(T& el) {
     if (space = 0) {
       reserve(8);
     } else if (sz == space) {
       reserve(2*space);
     }
+    // Вызывается оператор =, копирует по ссылке.
     elem[sz++] = el; 
   }
   // Размер доступной памяти в объекте класса вектор, константный метод, не может изменять значение полей класса.
@@ -53,12 +61,17 @@ public :
   int capacity() const { return space; }
   
   vec& operator= (const vec& a) {
-
+    // Прописать и понять что он делает.
   }
+
   T& operator[] (int n) {
     return elem[n];
   }
 };
+template <class T> vec<T>::vec(const vec<T>& arg) : sz{arg.sz}, elem{new T[arg.sz]} {
+  copy(arg, arg+sz, elem);
+}
+
 
 
 int main() {
