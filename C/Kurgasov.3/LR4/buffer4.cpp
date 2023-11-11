@@ -8,7 +8,7 @@
 
 using namespace std;
 template <class T>
-class NumArray {
+class numArray {
   int n;
   T* A; 
 
@@ -17,7 +17,7 @@ class NumArray {
   random_device gen;
 
 public:
-  NumArray(int n, int a=0, int b=0) : n{n}, disInt(a, b), disFloat(0.0, 1.0), A{new T[n]} {
+  numArray(int n, int a=0, int b=0) : n{n}, disInt(a, b), disFloat(0.0, 1.0), A{new T[n]} {
 
     if (!a && !b) {
       for (int i = 0; i < n; ++i) {
@@ -29,7 +29,7 @@ A[i] = disInt(gen) + disFloat(gen);
 }
 }
 }
-~NumArray() { delete[] A; }
+~numArray() { delete[] A; }
 void print() {
 int i;
 
@@ -38,7 +38,7 @@ int i;
       cout << A[i] << ", ";
     cout << A[i] << " ]";
   }
-  NumArray<T>* operator= (const NumArray<T>* A1) {
+  numArray<T>* operator= (const numArray<T>* A1) {
     this->n = A1->n;
     delete[] this->A;
 
@@ -50,13 +50,13 @@ int i;
 
     return this;
   }
-  template<class U> friend NumArray<U>* operator+ (const NumArray<U>& A1, const char c);
+  template<class U> friend numArray<U>* operator+ (const numArray<U>& A1, const char c);
 
 };
 
-template<class U> NumArray<U>* operator+ (const NumArray<U>& A1, const char c) {
+template<class U> numArray<U>* operator+ (const numArray<U>& A1, const char c) {
   int i, j;
-  NumArray<U>* A = new NumArray<U>{A1.n};
+  numArray<U>* A = new numArray<U>{A1.n};
 
   for(int i = 0; i < A->n; ++i) {
     A->A[i] = A1.A[i] + c;
@@ -75,7 +75,7 @@ template<class U> NumArray<U>* operator+ (const NumArray<U>& A1, const char c) {
 }
 
 
-class CharArray {
+class charArray {
   int n;
   char* str;
   
@@ -83,9 +83,9 @@ class CharArray {
   random_device gen;
 
 public: 
-  CharArray() : n{}, str{nullptr}, disInt{} {}
+  charArray() : n{}, str{nullptr}, disInt{} {}
   // Создает случайную строку
-  CharArray(int n, ...) : n{n}, disInt(0, 51), str{new char[n+1]} {
+  charArray(int n, ...) : n{n}, disInt(0, 51), str{new char[n+1]} {
     
     char abc[53] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     int i;
@@ -93,18 +93,18 @@ public:
     for (i = 0; i < n; ++i) str[i] = abc[ disInt(gen) ]; 
     str[i] = '\0';
   }
-  ~CharArray() { delete[] str; }
+  ~charArray() { delete[] str; }
 
-  CharArray* operator= (const CharArray* const A1);
+  charArray* operator= (const charArray* const A1);
 
   void print() { cout << "\"" << str << "\""; }
 
-  friend CharArray* operator+ (const CharArray& A1, const char c);
+  friend charArray* operator+ (const charArray& A1, const char c);
 
 
 };
 
-CharArray* CharArray::operator= (const CharArray* const A1) {
+charArray* charArray::operator= (const charArray* const A1) {
   int i;
   //if (this->n != A1->n) {
   char* p = new char[A1->n+1];
@@ -120,10 +120,10 @@ CharArray* CharArray::operator= (const CharArray* const A1) {
   return this;
 }
 
-CharArray* operator+ (const CharArray& A1, const char c) {
+charArray* operator+ (const charArray& A1, const char c) {
   const int& size = A1.n; int i;
 
-  CharArray* A = new CharArray[size+2]{};
+  charArray* A = new charArray[size+2]{};
 
   for (i = 0; i < size; ++i) A->str[i] = A1.str[i]; 
   A->str[i] = c; A->str[i+1] = '\0';
@@ -261,13 +261,22 @@ int main() {
   cout << M;
   cout << M1; */
   
-  vector< NumArray<float> > t0(10, {10, 0, 100});
-
-  for (int i = 0; i < 10 ; ++i) {
-    t0[i].print();
-    //t0[i]{10, 0, 100};
+  //vector< NumArray<float> > t0(10, {10, 0, 100});
+  int n = 10 ; string name = "A";
+  vector < vector < int > > t1 (n, vector(n, 5)) ;
+  cout << name << " = {" << endl;
+  int i, j;
+  for (i = 0; i < n ; ++i) {
+    cout << "\t[\n\t  №" << i+1 << ": ";
+    for (j = 0 ; j < n ; ++j) {
+      if (j == n-1 && i != n-1) { 
+        cout << t1[i][j] << ";\n\t]," << endl ; 
+      } else if (j == n-1 && i == n-1) {
+        cout << t1[i][j] << ";\n\t].\n   }" << endl;
+      } else { 
+        cout << t1[i][j] << ", " ;
+      }
+    }
   }
-
-
   return 0;
 }

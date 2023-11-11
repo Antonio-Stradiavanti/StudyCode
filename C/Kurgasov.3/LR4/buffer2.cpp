@@ -46,7 +46,7 @@ public :
     }
     this->sz = newsize;
   }
-  void push_back(T& el) {
+  void push_back(const T& el) {
     if (space = 0) {
       reserve(8);
     } else if (sz == space) {
@@ -60,24 +60,36 @@ public :
   int size() const { return sz; } 
   int capacity() const { return space; }
   
-  vec& operator= (const vec& a) {
-    // Прописать и понять что он делает.
-  }
+  vec<T>& operator= (const vec<T>&);
 
   T& operator[] (int n) {
     return elem[n];
   }
 };
-template <class T> vec<T>::vec(const vec<T>& arg) : sz{arg.sz}, elem{new T[arg.sz]} {
+
+template <class T>
+vec<T>::vec(const vec<T>& arg) : sz{arg.sz}, elem{new T[arg.sz]} {
   copy(arg, arg+sz, elem);
 }
 
+template <class T> 
+vec<T>& vec<T>::operator=(const vec<T>& arg) {
+  // Просто Заново создаем внутренний динамический массив. 
+  if (this != &arg) {
+    T* p = new T[arg.sz];
 
+    copy(arg.elem, arg.elem+arg.sz, p);
+    // Лучше не стирать информацию пока ее нечем заменить
+    delete[] elem;
+
+    elem = p; sz = arg.sz;
+  }
+  return *this;
+}
 
 int main() {
-  // Тут уже есть логическая проверка на то что новый размер больше прежнего.
-  for (int i = 10; i < 5; ++i) {
-    cout << "Test" << endl ;
-  }
+  vec<int> A;
+  A.push_back(10);
+
   return 0;
 }
