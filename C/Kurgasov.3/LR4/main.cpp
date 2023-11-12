@@ -173,6 +173,10 @@ public:
   Matrix<T> operator+ (const char c) ;
 
   void setName(const string name) { this->name = name; } ;
+  bool empty () const { 
+    if (mA.empty()) return 1;
+    else return 0; 
+  }
 
   template <class U> friend ostream& operator<< (ostream& cout, const Matrix<U>& M) ;
 
@@ -244,9 +248,12 @@ void menu() {
 
   char c;
 
-  vector < Matrix < numArray<int> > > Mi;
-  vector < Matrix < numArray<float> > > Mf;
-  vector < Matrix < charArray > > Ms;
+  Matrix < numArray <int> > Mi_o; Matrix < numArray <int> > Mi_s;
+
+  Matrix < numArray <float> > Mf_o; Matrix < numArray <float> > Mf_s;
+
+  Matrix < charArray > Ms_o; Matrix < charArray > Ms_s;
+
   //cout << "\n* Решение лабораторной работы \"Параметризованные классы\"\n\n" << "! Примечание, в данной программе используются следующие условные обозначения :\n  Символ >> означает \"введите команду\",\n  Символ % означает \"пример\".\n  Пара символов [ ] указывает на опциональность параметра.\n\n" << " - c -> Сформировать матрицу, сост. из :\n" << "    + n -> Массивов чисел,\n      * i -> Массивов целых чисел,\n      * f -> Массивов вещественных чисел" << "\n    + s -> Строк (массивов символов)." << "\n  - e -> Завершить работу программы.\n\n% Команда : cni -s=10 --min=0 --max=20, означает : сформировать матрицу из массивов целых чисел, каждый из которых содержит 10 элементов, принимающих случайные значения из интервала от 0 до 20 ;\n\n>> ";
 
   string help = "  * Справка\n\n    * Функционал\n\n      Программа позволяет создать матрицу, состоящую из массивов чисел или символов, определена операция \"Сложение поэлементное сложение с символом\"\n\n    * Условные обозначения\n\n      - Символ % означает \"пример\",\n      - Символ >> означает \"введите команду\".\n\n";
@@ -282,12 +289,10 @@ void menu() {
         cout << "    >> "; cin >> in2;
         switch (in2) {
         case 'i':
-          Mi.reserve(2);
-          Mi.emplace_back(Matrix < numArray<int> > {n, m, size, name, a, b});
+          Mi_o = Matrix< numArray< int > > {n, m, size, name, a, b};
           break;
         case 'f':
-          Mf.reserve(2);
-          Mf.emplace_back(Matrix < numArray<float> > {n, m, size, name, a, b});
+          Mf_o = Matrix< numArray< float > > {n, m, size, name, a, b};
           break;
         default:
           goto here;
@@ -297,9 +302,7 @@ void menu() {
       case 's':
         cout << create_string_matrix; 
         cout << "    >> --size="; cin >> size;
-        Ms.reserve(2);
-        Ms.emplace_back(Matrix < charArray > {n, m, size, name});
-        cout << "here" << endl;
+        Ms_o = Matrix< charArray > {n, m, size, name};
         break;
       default:
         goto here;
@@ -312,23 +315,21 @@ void menu() {
 
         switch (in3) {
         case 'p':
-          if (!Ms.empty()) cout << Ms[0];
-          else if (!Mi.empty()) cout << Mi[0];
-          else if (!Mf.empty()) cout << Mf[0];
+          if (!Ms_o.empty()) cout << Ms_o;
+          else if (!Mi_o.empty()) cout << Mi_o;
+          else if (!Mf_o.empty()) cout << Mf_o;
           break;
         case 's':
           cout << "    * Введите символ\n\n    >> -c=";
           cin >> c;
-          if (!Ms.empty()){
-            Ms.emplace_back(Ms[0]+c);
-            cout << Ms[1];
-          } else if (!Mi.empty()){
-            Mi.emplace_back(Mi[0]+c);
-            cout << Mi[1];
-          } else if (!Mf.empty()){
-            Mf.emplace_back(Mf[0]+c);
-            cout << Mf[1];
-          }   
+          if (!Ms_o.empty()) { 
+            Ms_s = Ms_o + c; cout << Ms_s;
+          } else if (!Mi_o.empty()) {
+            Mi_s = Mi_o + c; cout << Mi_s;
+          } else if (!Mf_o.empty()) {
+            Mf_s = Mf_o + c; cout << Mf_s;
+          }
+          break;  
         default:
           break;
         }
@@ -350,6 +351,7 @@ void menu() {
 
 }
 int main() {
-  menu();
+  //menu();
+  
   return 0;
 }
