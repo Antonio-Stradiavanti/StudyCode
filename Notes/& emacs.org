@@ -1,8 +1,11 @@
 * emacs в фоновом режиме
 
-** System Crafters
+Комадна emacsclient позволяет взаимодействовать с emacs, запущенном в режиме сервера. Сообщает запущенному сеансу emacs о доступе к файлу.
 
-emacs server - запускает emacs в фоновом режиме при запуске системы.
+Завершить работу emacs, закрыть все фреймы :
+- emacsclient -e "(save-buffers-kill-emacs)"
+
+** System Crafters
 
 Команда ~emacs --fg-daemon~ запускает emacs в режиме программы агента (daemon) в качестве процесса переднего плана.
 

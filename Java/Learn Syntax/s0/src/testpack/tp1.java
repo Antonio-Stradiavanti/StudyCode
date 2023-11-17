@@ -1,4 +1,4 @@
-package testpack;
+package LearnJava.s0.src.testpack;
 
 public class tp1 {
     String name;
