@@ -1,0 +1,7 @@
+* Терминология
+
+- entity reference :: Ссылка на объект.
+
+* Синтаксис
+
+[[~/__Vault/Imgs/xml-entity-ref.png]]
