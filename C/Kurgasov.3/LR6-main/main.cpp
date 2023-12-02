@@ -15,15 +15,7 @@ using namespace std;
 
 */
 /* Перечисляемый тип, описывает множество условных знаков */
-enum MapSymbolType {
-  relief, vegCover, water, humanSettlement, road, localObject
-};
-enum ReliefType {
-  desert, mountain, volcano, lowLand
-};
-enum WaterType {
-  swamp, river
-};
+
 enum VegCoverType {
   forest
 };
@@ -31,16 +23,18 @@ enum HumanSettlementType {
   city, village
 };
 
-enum SwampState {
-  drained, traversable, unTraversable, barelyPassable
-};
 /* MapSymbol : корень иерархии классов */ 
 class MapSymbol {
 public: 
+
+  enum Type {
+    relief, vegCover, water, humanSettlement, road, localObject
+  };
+
   // Конструкторы
   MapSymbol() : latAndLong{0, 0}, coords{ 0, 0 }, type {} {}
 
-  MapSymbol(MapSymbolType type) : latAndLong{ 0, 0 }, coords{ 0, 0 }, type{ type } {}
+  MapSymbol(Type type) : latAndLong{ 0, 0 }, coords{ 0, 0 }, type{ type } {}
   // Задает описание 
   virtual void setDescription() = 0;
   //virtual void input() = 0;
@@ -63,7 +57,7 @@ public:
 private:
   int latAndLong[2];
   int coords[2];
-  MapSymbolType type;
+  Type type;
 
 protected:  
   string symbolDescr;
@@ -76,9 +70,14 @@ protected:
 // Описывает возвышенность, низменность, наледь.
 class Relief : virtual public MapSymbol {
 public:
+
+  enum ReliefType {
+    desert, mountain, volcano, lowLand
+  };
+
   // Объект рельефа мы не создаем.
   Relief() : spec{}, height{}, altitude{} {}
-  Relief(ReliefType spec, double altitude=0, double height=0) : MapSymbol(MapSymbolType::relief), height{height}, altitude{altitude}, spec{spec} {}
+  Relief(ReliefType spec, double altitude=0, double height=0) : MapSymbol(Type::relief), height{height}, altitude{altitude}, spec{spec} {}
 
   void setHeight(double height) { this->height = height; };
   void setAltitude(double altitude) { this->altitude = altitude; }
@@ -96,8 +95,13 @@ private:
 // Описывает водоем
 class Water : virtual public MapSymbol {
 public:
+
+  enum WaterType {
+    swamp, river
+  };
+
   Water() : spec{}, depth{} {}
-  Water(WaterType spec, double depth) : MapSymbol(MapSymbolType::water), spec{spec}, depth{depth} {}
+  Water(WaterType spec, double depth) : MapSymbol(Type::water), spec{spec}, depth{depth} {}
   // Объект водоема мы не создаем.
   void setDepth(double depth) { this->depth = depth; };
   double getDepth() { return depth; }
@@ -109,6 +113,11 @@ private:
 // Болото, множественное наследование
 class Swamp : public Water, public Relief {
 public:
+
+  enum SwampState {
+    drained, traversable, unTraversable, barelyPassable
+  };
+
   Swamp() : Water(), Relief(), state{} {}
   Swamp(int lat, int lon, int x, int y, SwampState state, double depth) : Water(WaterType::swamp, depth), Relief(ReliefType::lowLand), state{state} {
     setLatAndLong(lat, lon);
@@ -160,7 +169,7 @@ private:
 int main() {
   // PugiXML соответствует DOM
   // Контейнер сериализации
-  pugi::xml_document doc;
+  pugi::xml_document doc, newDoc;
   // Выполняет парсинг XML документа
 
   pugi::xml_parse_result result = doc.load_file("x0.xml");
@@ -182,6 +191,13 @@ int main() {
     cout << "}\n\n---" << endl;
 
   }
+  // Передаем в конструктор имя узла и создаем узел типа тег или явно указываем тип узла, чтобы создать например текстовый узел (pugi::node_pcdata).
+  pugi::xml_node n = newDoc.append_child("Главный Тег");
+  pugi::xml_node nc = n.append_child("Его потомок");
+  nc.append_child(pugi::node_pcdata).set_value("Просто обычный текст !");
+
+  cout << "Результат операции \" сохранить файл \" : " << newDoc.save_file("x1.xml") << endl;
+
 
   //string out = node.find_child_by_attribute("MapSymbol", "depth", "none").child("Description").child_value();
 

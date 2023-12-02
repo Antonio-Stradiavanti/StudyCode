@@ -1,0 +1,26 @@
+# ninja log v5
+1	731	7231652893328209	Main-Window_autogen/timestamp	af855e6d25ec77ab
+1	731	7231652893328209	P:/__Vault/Qt/Learn/build-Main-Window-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Main-Window_autogen/mocs_compilation.cpp	af855e6d25ec77ab
+732	3294	7231652920663106	CMakeFiles/Main-Window.dir/Main-Window_autogen/mocs_compilation.cpp.obj	42245a72717616c9
+1	731	7231652893328209	Main-Window_autogen/mocs_compilation.cpp	af855e6d25ec77ab
+1	731	7231652893328209	P:/__Vault/Qt/Learn/build-Main-Window-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Main-Window_autogen/timestamp	af855e6d25ec77ab
+748	3334	7231652921016761	CMakeFiles/Main-Window.dir/mainwindow.cpp.obj	62159fd1f4675006
+739	3410	7231652921830713	CMakeFiles/Main-Window.dir/main.cpp.obj	d6030e0e35c1ee68
+3411	3779	7231652925451193	Main-Window.exe	1631b36dc09e620
+38	751	7231661836641864	Main-Window_autogen/timestamp	af855e6d25ec77ab
+38	751	7231661836641864	Main-Window_autogen/mocs_compilation.cpp	af855e6d25ec77ab
+38	751	7231661836641864	P:/__Vault/Qt/Learn/build-Main-Window-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Main-Window_autogen/timestamp	af855e6d25ec77ab
+38	751	7231661836641864	P:/__Vault/Qt/Learn/build-Main-Window-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Main-Window_autogen/mocs_compilation.cpp	af855e6d25ec77ab
+751	829	7231661838917924	Main-Window_autogen/EWIEGA46WW/qrc_res.cpp	131e6edff0a91822
+751	829	7231661838917924	P:/__Vault/Qt/Learn/build-Main-Window-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Main-Window_autogen/EWIEGA46WW/qrc_res.cpp	131e6edff0a91822
+853	939	7231661840077168	CMakeFiles/Main-Window.dir/Main-Window_autogen/EWIEGA46WW/qrc_res.cpp.obj	f65ce4ab42d881b9
+838	2977	7231661860441692	CMakeFiles/Main-Window.dir/mainwindow.cpp.obj	62159fd1f4675006
+829	3010	7231661860795522	CMakeFiles/Main-Window.dir/Main-Window_autogen/mocs_compilation.cpp.obj	42245a72717616c9
+845	3035	7231661861051473	CMakeFiles/Main-Window.dir/main.cpp.obj	d6030e0e35c1ee68
+3035	3256	7231661863206964	Main-Window.exe	c5b11b10c6b70500
+16	312	7231662388630693	Main-Window_autogen/timestamp	af855e6d25ec77ab
+16	312	7231662388630693	Main-Window_autogen/mocs_compilation.cpp	af855e6d25ec77ab
+16	312	7231662388630693	P:/__Vault/Qt/Learn/build-Main-Window-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Main-Window_autogen/timestamp	af855e6d25ec77ab
+16	312	7231662388630693	P:/__Vault/Qt/Learn/build-Main-Window-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/Main-Window_autogen/mocs_compilation.cpp	af855e6d25ec77ab
+316	2412	7231662409635500	CMakeFiles/Main-Window.dir/mainwindow.cpp.obj	62159fd1f4675006
+2412	2605	7231662411519188	Main-Window.exe	c5b11b10c6b70500
