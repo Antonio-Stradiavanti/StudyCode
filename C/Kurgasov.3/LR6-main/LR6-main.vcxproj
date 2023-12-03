@@ -133,6 +133,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Hierarchy.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

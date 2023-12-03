@@ -1,8 +1,5 @@
-﻿#include<iostream>
-#include<vector>
-#include<string>
-#include"pugixml.hpp"
-using namespace std;
+﻿#include "pugixml.hpp"
+#include "Hierarchy.h"
 //using namespace pugi;
 /* 
 
@@ -13,9 +10,9 @@ using namespace std;
 
   - [ ] Нужно разобраться с структурой XML справочника, понять : какие мне нужны свойства для каждого из классов чтобы его идентифицировать.
 
-*/
-/* Перечисляемый тип, описывает множество условных знаков */
+  Операции сериализации выполняем с классом XML (он аггрегирует данные)
 
+*/
 enum VegCoverType {
   forest
 };
@@ -23,147 +20,79 @@ enum HumanSettlementType {
   city, village
 };
 
-/* MapSymbol : корень иерархии классов */ 
-class MapSymbol {
-public: 
-
-  enum Type {
-    relief, vegCover, water, humanSettlement, road, localObject
-  };
-
-  // Конструкторы
-  MapSymbol() : latAndLong{0, 0}, coords{ 0, 0 }, type {} {}
-
-  MapSymbol(Type type) : latAndLong{ 0, 0 }, coords{ 0, 0 }, type{ type } {}
-  // Задает описание 
-  virtual void setDescription() = 0;
-  //virtual void input() = 0;
-
-  string getDecsription() {
-    return symbolDescr;
-  }
-
-  void setLatAndLong(int lat, int lon) {
-    latAndLong[0] = lat, latAndLong[1] = lon;
-  }
-  void setCoords(int x, int y) {
-    coords[0] = x; coords[1] = y;
-  }
-
-  void print() {
-    cout << "Координаты : x=" << (/*111 * latAndLong[0] +*/ coords[0]) << ", y=" << (/*111 * latAndLong[1] + */ coords[1] ) << "\n\nОписание : " << symbolDescr << endl;
-  }
-
-private:
-  int latAndLong[2];
-  int coords[2];
-  Type type;
-
-protected:  
-  string symbolDescr;
-
-  pugi::xml_document doc;
-  pugi::xml_node node;
-
-};
-/* Производные классы от MapSymbol */
-// Описывает возвышенность, низменность, наледь.
-class Relief : virtual public MapSymbol {
-public:
-
-  enum ReliefType {
-    desert, mountain, volcano, lowLand
-  };
-
-  // Объект рельефа мы не создаем.
-  Relief() : spec{}, height{}, altitude{} {}
-  Relief(ReliefType spec, double altitude=0, double height=0) : MapSymbol(Type::relief), height{height}, altitude{altitude}, spec{spec} {}
-
-  void setHeight(double height) { this->height = height; };
-  void setAltitude(double altitude) { this->altitude = altitude; }
-
-  double getAltitude() { return altitude; }
-  double getHeight() { return height; }
-
-private:
-  ReliefType spec;
-  
-  double height;
-  double altitude;
-
-};
-// Описывает водоем
-class Water : virtual public MapSymbol {
-public:
-
-  enum WaterType {
-    swamp, river
-  };
-
-  Water() : spec{}, depth{} {}
-  Water(WaterType spec, double depth) : MapSymbol(Type::water), spec{spec}, depth{depth} {}
-  // Объект водоема мы не создаем.
-  void setDepth(double depth) { this->depth = depth; };
-  double getDepth() { return depth; }
-
-private:
-  WaterType spec;
-  double depth;
-};
-// Болото, множественное наследование
-class Swamp : public Water, public Relief {
-public:
-
-  enum SwampState {
-    drained, traversable, unTraversable, barelyPassable
-  };
-
-  Swamp() : Water(), Relief(), state{} {}
-  Swamp(int lat, int lon, int x, int y, SwampState state, double depth) : Water(WaterType::swamp, depth), Relief(ReliefType::lowLand), state{state} {
-    setLatAndLong(lat, lon);
-    setCoords(x, y);
-
-  }
-    // Для вызова методов нужно использовать оператор глобального разрешения.
-    // Нужно вызвать параметризованные конструкторы рельефа и водоема
-  void setDescription() {
-    string s = " болото, глубиной d=" + to_string(getDepth()) + "м : ";
-    switch (state) {
-    case drained :
-      symbolDescr = "Осущенное" + s + "Несколько голубых горизонтальных волнистых линий, расположенных на небольшом расстоянии друг от друга и направленных сверху вниз, перечеркнутых прямой линией, что указывает на то что болото осушено";
-      break;
-    case traversable:
-      symbolDescr = "Проходимое" + s + "Несколько голубых дискретных горизонтальных волнистых линий, расположенных на небольшом расстоянии друг от друга и направленных сверху вниз, пространство между ними заполняют серым цветом, что указывает на то что болото проходимо";
-      break;
-    default: 
-      symbolDescr = "Непроходимое и труднопроходимое" + s + "Несколько голубых горизонтальных волнистых линий, расположенных на небольшом расстоянии друг от друга и направленных сверху вниз, символизирующих рябь на поверхности болота из-за стоячей воды, между линиями указывают растительный покров болота : трава, мох, тростник и т.п.";
-      break;
-    }
-  }
-  void drainSwamp() {
-    if (state != drained) 
-      state = drained;
-  }
-
-private:
-  SwampState state;
-
-};
-
 /* XML : Справочник */
 class XML {
   /*
   
   Существуют всего 3 класса, представляющих дерево DOM : xml_document, xml_node, xml_attribute.
-
   создание, удаление, редактирование объектов, загрузку/выгрузку в файл.
   
   */
 public: 
-  pugi::xml_document doc;
+  // Получаем из метода класса, производного от MapSymbol
+  XML() : doc{} {
+    // Инициализируем корень
+    init();
 
+  }
+
+  void writeLatAndLong(const array<int, 2>& latAndLong) {
+    landMap.child("x").text().set(latAndLong[0]);
+    landMap.child("y").text().set(latAndLong[1]);
+
+  }
+
+  void reset() {
+    doc.reset();
+    init();
+
+  }
+
+  void save(string fileName) {
+    doc.save_file(fileName.c_str());
+  }
+  // Принимает вектор указателей на корень иерархии классов
+  /* 1я Сторона сериализации : создаем справочник из файла */
+  void load(string fileName, vector < MapSymbol* >& store) {
+    //writeLatAndLong(store[0]->getLatAndLong());
+    doc.load_file(fileName.c_str());
+    MapSymbol* tmp;
+    //pugi::xml_attribute atr;
+
+    for (auto symbol : mapSymbols.children()) {
+      // Перебираем каждый из дочерних узлов mapSymbols
+      
+      // Тут дальше по атрибутам уже будем определять экземпляром какого класса из иерархии классов является перебираемая запись.
+      MapSymbol::Type1 type1 = static_cast<MapSymbol::Type1>(symbol.attribute("type1").as_int());
+
+
+    }
+
+  }
 
 private:
+
+  pugi::xml_document doc;
+
+  pugi::xml_node landMap, mapSymbols;
+
+  void init() {
+    string mapNameAtr;
+    cout << "<< Введите название топографической карты :\n>> ";
+    cin >> mapNameAtr;
+
+    landMap = doc.append_child("LandMap");
+    landMap.append_attribute("name").set_value(mapNameAtr.c_str());
+
+    pugi::xml_node x = landMap.append_child("x");
+    x.append_child(pugi::node_pcdata);
+
+    pugi::xml_node y = landMap.append_child("y");
+    y.append_child(pugi::node_pcdata);
+
+    mapSymbols = doc.append_child("MapSymbols");
+  }
+
 };
 
 int main() {
