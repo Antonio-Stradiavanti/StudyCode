@@ -35,29 +35,52 @@
 //  
 //
 //}
+template < class T >
+int numDigits(T num) {
+  int dig = 0;
+
+  if (num < 0) dig = 1;
+  while (num) {
+	num /= 10; dig++;
+  }
+
+  return dig;
+}
+/* Реализация алгоритма */
+Graph Graph::findMinSpannigTree() {
+
+
+
+}
 istream& operator>> (istream& cin, Graph& g) {
   return cin;
 }
 ostream& operator<< (ostream& cout, const Graph& g) {
 
+
   cout << "---\n\nМатрица смежности " << g.name << "\n" << endl;
   
   // Как выровнять поле в потоке вывода С++
 
+  cout << setprecision(2) << fixed;
+  
   for (int i = 0; i < g.num_v; ++i) {
-	cout << "| " << g.V[i] << " | ";
+	cout << "| " << left << setw(g.maxVertexNameLen) << g.V[i] << " : ";
 	for (int j = 0; j < g.num_v; ++j) {
-	  cout << g.adjMatrix[i][j] << " ";
+	  cout << left << setw(g.maxWeightLen) << g.adjMatrix[i][j] << " ";
 	}
 	cout << "|" << endl;
   }
   cout << "\n---" << endl;
+
+  cout << setprecision(6);
+  cout.unsetf(ios::fixed);
 
   return cout;
 
 }
 int main() {
 
-  Graph g(13, 100, 10, "G");
+  Graph g(20, 200, 10, "G");
   cout << g;
 }

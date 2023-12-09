@@ -5,12 +5,27 @@
 #include <string>
 using namespace std;
 
+template < class T >
+int numDigits(T num);
+
+/* 
+
+TODO Написать алгоритм построения остовного дерева, и конструктор перемещения
+
+*/
 class Graph {
 public:
 
-  Graph() : num_v{}, num_e{}, w_t{}, E(), V(), adjMatrix() {}
+  Graph() : num_v{}, num_e{}, w_t{}, E(), V(), adjMatrix(), maxVertexNameLen{}, maxWeightLen{}, name{}
+  {}
 
-  Graph(int num_v, int num_e, int max_w, string name) : w_t{}, name{ name }, maxVerexNameLen{ static_cast<int>(to_string(num_v).length()) }, maxWeightLen{ static_cast<int>(to_string(max_w).length()) } {
+  Graph(Graph&& g) : E{ move(g.E) }, V{ move(g.V) }, adjMatrix{ move(g.adjMatrix) }, num_v{ g.num_v }, num_e{ g.num_e }, w_t{ g.w_t }, maxVertexNameLen{ g.maxVertexNameLen }, maxWeightLen{ g.maxWeightLen }, name{ g.name }
+  {
+	g.num_e = 0; g.num_v = 0; g.w_t = 0;
+
+	g.name.clear();
+  }
+  Graph(int num_v, int num_e, int max_w, string name) : w_t{}, name{ name }, maxVertexNameLen{ numDigits(num_v) }, maxWeightLen{ numDigits(max_w) + 5 } {
 
 	if (num_e > (num_v * (num_v - 1)) / 2) num_e = (num_v * (num_v - 1)) / 2;
 
@@ -23,6 +38,9 @@ public:
 	adjMatrix = vector< vector < double > >(num_v, vector< double >(num_v, -1));
 
 	uniform_int_distribution<int> disIntW(0, max_w);
+	uniform_real_distribution<double> disDoubleW(0, 1);
+
+
 	uniform_int_distribution<int> disIntE(0, num_v - 1);
 
 	random_device gen;
@@ -36,14 +54,14 @@ public:
 	}
 
 	for (int i = 0; i < num_e; ++i) {
-	  adjMatrix[E[i].first][E[i].second] = disIntW(gen);
-	  adjMatrix[E[i].second][E[i].first] = disIntW(gen);
+	  adjMatrix[E[i].first][E[i].second] = disIntW(gen) + disDoubleW(gen);
+	  adjMatrix[E[i].second][E[i].first] = disIntW(gen) + disDoubleW(gen);
 	}
 
   }
 
 
-  Graph* findMinSpannigTree();
+  Graph findMinSpannigTree();
 
   // Пользователь заполняет граф
   friend istream& operator>> (istream&, Graph&);
@@ -53,7 +71,7 @@ private:
   int num_v, num_e;
   int w_t;
 
-  int maxVerexNameLen, maxWeightLen;
+  int maxVertexNameLen, maxWeightLen;
 
   string name;
 

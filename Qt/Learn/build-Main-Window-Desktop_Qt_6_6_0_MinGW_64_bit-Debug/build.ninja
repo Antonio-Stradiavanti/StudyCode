@@ -176,7 +176,7 @@ build Main-Window_autogen_timestamp_deps: phony CMakeFiles/Main-Window_autogen_t
 #############################################
 # Utility command for Main-Window_autogen
 
-build Main-Window_autogen: phony CMakeFiles/Main-Window_autogen Main-Window_autogen/timestamp Main-Window_autogen/mocs_compilation.cpp Main-Window_autogen_timestamp_deps
+build Main-Window_autogen: phony CMakeFiles/Main-Window_autogen Main-Window_autogen/include/ui_mainwindow.h Main-Window_autogen/timestamp Main-Window_autogen/mocs_compilation.cpp Main-Window_autogen_timestamp_deps
 
 
 #############################################
@@ -207,7 +207,7 @@ build CMakeFiles/Main-Window_autogen_timestamp_deps | ${cmake_ninja_workdir}CMak
 #############################################
 # Phony custom command for CMakeFiles\Main-Window_autogen
 
-build CMakeFiles/Main-Window_autogen | ${cmake_ninja_workdir}CMakeFiles/Main-Window_autogen: phony Main-Window_autogen/timestamp || Main-Window_autogen_timestamp_deps
+build CMakeFiles/Main-Window_autogen Main-Window_autogen/include/ui_mainwindow.h | ${cmake_ninja_workdir}CMakeFiles/Main-Window_autogen ${cmake_ninja_workdir}Main-Window_autogen/include/ui_mainwindow.h: phony Main-Window_autogen/timestamp || Main-Window_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.

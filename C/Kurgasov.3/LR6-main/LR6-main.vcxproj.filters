@@ -26,7 +26,10 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Hierarchy.h">
+    <ClInclude Include="hierarchy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xml_catalog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

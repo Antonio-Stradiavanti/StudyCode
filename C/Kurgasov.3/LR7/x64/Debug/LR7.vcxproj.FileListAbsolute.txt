@@ -1,0 +1,2 @@
+P:\__Vault\C\Kurgasov.3\LR7\x64\Debug\LR7.vcxproj.AssemblyReference.cache
+P:\__Vault\C\Kurgasov.3\LR7\x64\Debug\LR7.exe

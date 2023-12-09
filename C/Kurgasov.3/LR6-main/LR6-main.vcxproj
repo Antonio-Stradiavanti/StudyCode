@@ -133,8 +133,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Hierarchy.h" />
+    <ClInclude Include="hierarchy.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="xml_catalog.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LR6-main.rc" />
