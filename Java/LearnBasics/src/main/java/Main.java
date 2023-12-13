@@ -1,9 +1,24 @@
+import Annotation.MyAnno;
+
+interface Callback {
+  void callback(int param);
+}
+@MyAnno(str = "Первая аннотация", val = 100)
+class Client implements Callback {
+  public void callback(int p) {
+    System.out.println("Callback вызван со значением " + p);
+  }
+}
 public class Main {
 
   static void testThrow() throws NullPointerException {
     throw new NullPointerException("Демонстация");
   }
   public static void main(String[] args) {
+
+    Callback c = new Client();
+    c.callback(10);
+
     int priorityLevel;
     int eventCode = 6010;
     priorityLevel = switch(eventCode) {

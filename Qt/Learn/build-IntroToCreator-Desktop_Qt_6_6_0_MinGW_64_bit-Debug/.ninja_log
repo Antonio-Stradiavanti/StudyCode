@@ -1,0 +1,18 @@
+# ninja log v5
+11	234	7240793919105946	IntroToCreator_autogen/timestamp	7813f2f0602e5d51
+11	234	7240793919105946	IntroToCreator_autogen/mocs_compilation.cpp	7813f2f0602e5d51
+11	234	7240793919105946	P:/__Vault/Qt/Learn/build-IntroToCreator-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/IntroToCreator_autogen/mocs_compilation.cpp	7813f2f0602e5d51
+11	234	7240793919105946	P:/__Vault/Qt/Learn/build-IntroToCreator-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/IntroToCreator_autogen/timestamp	7813f2f0602e5d51
+2580	2767	7240793944352156	IntroToCreator.exe	9f6936adc236a658
+668	3684	7240792518266197	CMakeFiles/IntroToCreator.dir/IntroToCreator_autogen/mocs_compilation.cpp.obj	813ea1ffe32b395f
+672	3677	7240792518184659	CMakeFiles/IntroToCreator.dir/main.cpp.obj	269b7a0977e246df
+238	2580	7240793942549654	CMakeFiles/IntroToCreator.dir/widget.cpp.obj	e750e5cb08482eba
+733	806	7238496412002479	IntroToCreator_autogen/EWIEGA46WW/qrc_res.cpp	319c6519f121a7e4
+733	806	7238496412002479	P:/__Vault/Qt/Learn/build-IntroToCreator-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/IntroToCreator_autogen/EWIEGA46WW/qrc_res.cpp	319c6519f121a7e4
+821	894	7238496412948450	CMakeFiles/IntroToCreator.dir/IntroToCreator_autogen/EWIEGA46WW/qrc_res.cpp.obj	8d9d574e8df647aa
+16	237	7240795398504814	IntroToCreator_autogen/timestamp	7813f2f0602e5d51
+16	237	7240795398504814	IntroToCreator_autogen/mocs_compilation.cpp	7813f2f0602e5d51
+16	237	7240795398504814	P:/__Vault/Qt/Learn/build-IntroToCreator-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/IntroToCreator_autogen/timestamp	7813f2f0602e5d51
+16	237	7240795398504814	P:/__Vault/Qt/Learn/build-IntroToCreator-Desktop_Qt_6_6_0_MinGW_64_bit-Debug/IntroToCreator_autogen/mocs_compilation.cpp	7813f2f0602e5d51
+240	2563	7240795421548631	CMakeFiles/IntroToCreator.dir/widget.cpp.obj	e750e5cb08482eba
+2563	2754	7240795423658759	IntroToCreator.exe	9f6936adc236a658

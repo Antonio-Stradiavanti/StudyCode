@@ -6,7 +6,7 @@ void menu() {
 	"*** Главное Меню\n\n1. Завершить работу программы\n2. Вывести перечень товаров\n3. Вывести справку\n\nГлавное Меню ***"
   );
   String^ inventoryMenu = gcnew String(
-	"### Меню производителя\n\n1. Вывести список складов и идентификаторов товаров на каждом из них\n2. Добавить новый товар на склад\n3. Удалить товар со склада\n4. Редактировать информацию о товаре\n\nПеречень товаров ###"
+	"### Меню производителя\n\n1. Вывести список товаров\n2. Добавить новый товар в перечень\n3. Удалить товар из перечня\n4. Редактировать информацию о товаре\n\nПеречень товаров ###"
   );
 
   Int32 c;
@@ -25,20 +25,58 @@ void menu() {
 
 	  break;
 	default:
+	  break;
 	}
 
   }
 }
 
+ref class Tst {
+
+  String^ searchCriteria;
+
+public :  
+  List<String^>^ list;
+
+  Tst () {
+	list = gcnew List<String^>();
+  }
+
+  void add(String^ str) {
+	list->Add(str);
+
+  }
+
+  void find(String^ searchCriteria) {
+	this->searchCriteria = searchCriteria;
+	Predicate<String^>^ match = gcnew Predicate<String^>(this, &Tst::pred);
+	Console::WriteLine(list->Find(match));
+  }
+
+  void print() {
+	for each (String^ str in list) {
+	  Console::WriteLine(str);
+	}
+  }
+
+  bool pred(String^ str) {
+	if (str == searchCriteria) {
+	  return true;
+	} else {
+	  return false;
+	}
+  }
+
+
+
+};
+
+
 int main() {
-
-
-  //Product^ g = gcnew Product(gcnew String("23232"), gcnew String("chair"), gcnew DateTime(2023, 12, 9), 10000, 12.23);
-  //g->input();
-  //g->print();
-  Random^ rnd = gcnew Random();
-
-  Console::WriteLine(rnd->Next(1000000000, Int32::MaxValue-1));
+  
+  ManufacturerInventory^ inv = gcnew ManufacturerInventory("Перечень 1");
+  inv->add();
+  inv->print();
 
   Console::Read();
 
