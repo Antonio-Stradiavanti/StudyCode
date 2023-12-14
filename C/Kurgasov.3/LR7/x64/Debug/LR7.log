@@ -1,0 +1,13 @@
+﻿  main.cpp
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(80,48): warning C4101: 'e': unreferenced local variable
+  (compiling source file 'main.cpp')
+  
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(93,27): warning C4101: 'e': unreferenced local variable
+  (compiling source file 'main.cpp')
+  
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(191,48): warning C4101: 'e': unreferenced local variable
+  (compiling source file 'main.cpp')
+  
+P:\__Vault\C\Kurgasov.3\LR7\main.cpp(13,26): warning C4101: 'mi': unreferenced local variable
+  main.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  LR7.vcxproj -> P:\__Vault\C\Kurgasov.3\LR7\x64\Debug\LR7.exe
