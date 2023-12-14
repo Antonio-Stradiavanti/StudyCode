@@ -160,7 +160,7 @@ private:
 int main() {
   // PugiXML соответствует DOM
   // Контейнер сериализации
-  pugi::xml_document doc;
+  pugi::xml_document doc, newDoc;
   // Выполняет парсинг XML документа
 
   pugi::xml_parse_result result = doc.load_file("x0.xml");
@@ -182,6 +182,10 @@ int main() {
     cout << "}\n\n---" << endl;
 
   }
+
+  pugi::xml_node root = newDoc.append_child("root"), node = root.append_child("MapSymbol"), x = node.append_child("x");
+
+
 
   //string out = node.find_child_by_attribute("MapSymbol", "depth", "none").child("Description").child_value();
 
