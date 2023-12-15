@@ -71,12 +71,49 @@ public :
 
 };
 
-
+ref class forPred {
+public:
+  static Int32 productSearchCriteria = 0;
+  static bool findProdcutById(Product^ pr){
+	return pr->getId() == productSearchCriteria ? true : false;
+  }
+};
 int main() {
   
   ManufacturerInventory^ inv = gcnew ManufacturerInventory("Перечень 1");
   inv->add();
+  inv->add();
+  //inv->add();
+
   inv->print();
+
+  inv->remove();
+  inv->print();
+
+  //inv->edit();
+  //inv->print();
+
+  //Console::Read();
+  //inv->print();
+  //Product^ pr;
+  //Product^ product = gcnew Product();
+  //Warehouse^ wh = gcnew Warehouse(product, "Склад");
+  //Predicate<Product^>^ matchProduct = gcnew Predicate<Product^>(&forPred::findProdcutById);
+  //wh->createProduct();
+  //wh->print(2);
+  //// Теперь выполним поиск.
+  //Console::Write("[ Id ] ");
+  //forPred::productSearchCriteria = Convert::ToInt32(Console::ReadLine());
+  //pr = wh->getProducts()->Find(matchProduct);
+  //product->fireDeleteProduct(pr);
+
+  //wh->print(2);
+
+
+  //Int32 c;
+  //Console::Write("[ >> ]"); c = Convert::ToInt32(Console::ReadLine());
+
+
 
   Console::Read();
 

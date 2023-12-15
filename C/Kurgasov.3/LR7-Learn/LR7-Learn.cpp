@@ -12,12 +12,7 @@ public:
   event SecondEventHandler^ OnSecondEvent;
 
   // Объявляем методы, вызывающие события
-  String^ fireOne() {
-    OnFirstEvent();
-  }
-  void raiseTwo(String^ msg) {
-    OnSecondEvent(msg);
-  }
+
 
 };
 
@@ -52,24 +47,28 @@ public:
 int main(array<System::String ^> ^args)
 {
     // И источник и получатель должны быть объединены, либо в главной ф-ции, либо еще в каком либо классе
-  Console::WriteLine("Пример реализации собственного события и его обработчика");
-  
-  EvtSrc^ src = gcnew EvtSrc();
+  try {
+    // Если открытый в таком режиме файл с существует, то его исх. содержимое будет стерто и заменено новым.
+    // Путь может быть любым.
 
-  EvtRcv^ rcv = gcnew EvtRcv(src);
+    Globalization::CultureInfo^ ci = gcnew Globalization::CultureInfo("ru-RU");
+    
+    // Представляет поток вывода, принимает байты и записывает их в файл
+    IO::FileStream^ fs = gcnew IO::FileStream("tst1.txt", IO::FileMode::Append, IO::FileAccess::Write, IO::FileShare::Read);
+    // Принимает текст и преобразует его в поток байт.
+    IO::StreamWriter^ sw = gcnew IO::StreamWriter(fs);
 
-  Console::WriteLine("Запустим события");
-  src->OnSecondEvent -= gcnew SecondEventHandler(rcv, &EvtRcv::secondEvent);
-  src->fireOne();
-  src->raiseTwo("Я без бутылки разобрался с механизмом событий )");
+    sw->WriteLine("Зафиксируем момент в файл {0}.", DateTime::Now.ToString(ci));
+    sw->WriteLine("Зафиксируем момент в файл {0}.", DateTime::Now.ToString(ci));
 
-  String^ s;
-  s = Console::ReadLine();
-  Console::WriteLine(s);
+    // Записываем содержимое буфера в файл на жестком диске
+    sw->Flush();
+    // Очищаем память, выделенную под буфер.
+    sw->Close();
 
-  delete s;
-  s = nullptr;
-  if (s == nullptr) Console::Write("0");
+  } catch (Exception^ e) {
+    Console::WriteLine(e->ToString());
+  }
 
   Console::Read();
 

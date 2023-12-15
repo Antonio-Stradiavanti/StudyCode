@@ -1,5 +1,9 @@
 import Annotation.MyAnno;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 interface Callback {
   void callback(int param);
 }
@@ -37,5 +41,11 @@ public class Main {
     } catch (NullPointerException e) {
       System.out.println("Перехватим исключение второй раз ))");
     }
+
+    DateFormat dt = new SimpleDateFormat("dd.MM.yy");
+    Calendar cal = Calendar.getInstance();
+    cal.add(Calendar.MONTH, 3);
+    System.out.println("До : " + dt.format(cal.getTime()));
+
   }
 }

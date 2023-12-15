@@ -1,11 +1,20 @@
 ﻿  main.cpp
-P:\__Vault\C\Kurgasov.3\LR7\classes.h(80,48): warning C4101: 'e': unreferenced local variable
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(116,48): warning C4101: 'e': unreferenced local variable
   (compiling source file 'main.cpp')
   
-P:\__Vault\C\Kurgasov.3\LR7\classes.h(93,27): warning C4101: 'e': unreferenced local variable
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(128,28): warning C4101: 'e': unreferenced local variable
   (compiling source file 'main.cpp')
   
-P:\__Vault\C\Kurgasov.3\LR7\classes.h(191,48): warning C4101: 'e': unreferenced local variable
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(260,28): warning C4101: 'e': unreferenced local variable
+  (compiling source file 'main.cpp')
+  
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(262,48): warning C4101: 'e': unreferenced local variable
+  (compiling source file 'main.cpp')
+  
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(357,4): warning C4102: 'case2': unreferenced label
+  (compiling source file 'main.cpp')
+  
+P:\__Vault\C\Kurgasov.3\LR7\classes.h(369,28): warning C4101: 'e': unreferenced local variable
   (compiling source file 'main.cpp')
   
 P:\__Vault\C\Kurgasov.3\LR7\main.cpp(13,26): warning C4101: 'mi': unreferenced local variable
