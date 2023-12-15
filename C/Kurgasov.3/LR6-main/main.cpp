@@ -1,4 +1,4 @@
-﻿#include "hierarchy.h"
+#include "hierarchy.h"
 #include "xml_catalog.h"
 //using namespace pugi;
 /* 

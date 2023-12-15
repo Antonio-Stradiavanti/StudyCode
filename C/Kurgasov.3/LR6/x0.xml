@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Комментарий -->
+<root xmlns="friend">
+  <friendList>
+    <friend>
+      <name>Sample</name>
+      <age>25</age>
+    </friend>
+  </friendList>
+  <books>
+    <book>
+      <author>Carson</author>
+      <price format="dollar">31.95</price>
+    </book>
+  </books>
+</root>
