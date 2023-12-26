@@ -5,15 +5,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 template < class T >
 int numDigits(T num);
-
-/* 
-
-TODO Написать алгоритм построения остовного дерева, и конструктор перемещения
-
-*/
 class Graph {
 public:
 

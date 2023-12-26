@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IDZ-main", "IDZ-main.vcxproj", "{21C47145-F86C-414E-A0DB-F5F79F6F20E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21C47145-F86C-414E-A0DB-F5F79F6F20E9}.Debug|x64.ActiveCfg = Debug|x64
+		{21C47145-F86C-414E-A0DB-F5F79F6F20E9}.Debug|x64.Build.0 = Debug|x64
+		{21C47145-F86C-414E-A0DB-F5F79F6F20E9}.Debug|x86.ActiveCfg = Debug|Win32
+		{21C47145-F86C-414E-A0DB-F5F79F6F20E9}.Debug|x86.Build.0 = Debug|Win32
+		{21C47145-F86C-414E-A0DB-F5F79F6F20E9}.Release|x64.ActiveCfg = Release|x64
+		{21C47145-F86C-414E-A0DB-F5F79F6F20E9}.Release|x64.Build.0 = Release|x64
+		{21C47145-F86C-414E-A0DB-F5F79F6F20E9}.Release|x86.ActiveCfg = Release|Win32
+		{21C47145-F86C-414E-A0DB-F5F79F6F20E9}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {011B26C1-7DB3-405C-BA69-9AC2A43396CE}
+	EndGlobalSection
+EndGlobal

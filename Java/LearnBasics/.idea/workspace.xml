@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5ce61b37-77b8-4075-a963-1460598f7c07" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../C/Algorithms/IDZ/main" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/Algorithms/IDZ/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/Algorithms/IDZ/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/Algorithms/IDZ/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/Algorithms/IDZ/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/Algorithms/IDZ/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/Algorithms/IDZ_Learn" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/Algorithms/IDZ_Learn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C/Kurgasov.3/LR6/main" beforeDir="false" afterPath="$PROJECT_DIR$/../../C/Kurgasov.3/LR6/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Algorithms/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Algorithms/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Algorithms/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Algorithms/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Algorithms/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Algorithms/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Algorithms/Algorithms.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Algorithms/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/Learn Syntax.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/frst.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/Learn Syntax.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/s0.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/src/An.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/src/Box.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/src/Main$Apple.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/src/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/out/production/Learn Syntax/LearnJava/s0/src/testpack/tp1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/s0.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/src/An.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learn Syntax/s0/src/testpack/tp1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Annotation/MyAnno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/8.4/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.idea/dictionaries/stradiavanti.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Telegram bot/train_plan_bot/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/src/main/java/ru/learn/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/src/main/java/ru/learn/config/SpringConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/src/main/java/ru/learn/spring/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/src/main/java/ru/learn/spring/CarEngine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring/src/test/java/ru/learn/spring/ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../orgNotes/; C++.org" beforeDir="false" afterPath="$PROJECT_DIR$/../../orgNotes/; C++.org" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../orgNotes/; Java Spring Тг-бот.org" beforeDir="false" afterPath="$PROJECT_DIR$/../../orgNotes/; Java Spring Тг-бот.org" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../orgNotes/; Qt.org" beforeDir="false" afterPath="$PROJECT_DIR$/../../orgNotes/; Qt.org" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../orgNotes/; Курсач 3 Кургас.org" beforeDir="false" afterPath="$PROJECT_DIR$/../../orgNotes/; Курсач 3 Кургас.org" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="AnnotationType" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2ZDwVikzmnusYFf0ANYuzVFaLPb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "P:/Java Projects/Learn JPA/spring-data-jpa-course",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="LearnBasics" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5ce61b37-77b8-4075-a963-1460598f7c07" name="Changes" comment="" />
+      <created>1701969982678</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701969982678</updated>
+      <workItem from="1701969983717" duration="1940000" />
+      <workItem from="1702048584153" duration="2987000" />
+      <workItem from="1702386330970" duration="4428000" />
+      <workItem from="1702558866887" duration="2413000" />
+      <workItem from="1702798947531" duration="2445000" />
+      <workItem from="1702829019791" duration="790000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
